@@ -82,7 +82,7 @@ class Assignment extends React.Component {
               </Grid>
               <Grid item xs={6}></Grid>
               <Grid item xs={2}>
-                <Button variant="outlined">Add Assignment</Button>
+                <Button component={Link} to={{pathname:'/addassignment'}} variant="outlined">Add Assignment</Button>
               </Grid>
             </Grid>
             <div style={{ height: 450, width: '100%', align:"left"   }}>
@@ -96,6 +96,6 @@ class Assignment extends React.Component {
           </div>
       )
   }
-}  
+}
 
 export default Assignment;
