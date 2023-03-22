@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom'
 import Cookies from 'js-cookie';
+import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Radio from '@mui/material/Radio';
 import {DataGrid} from '@mui/x-data-grid';
@@ -75,10 +76,18 @@ class Assignment extends React.Component {
       const assignmentSelected = this.state.assignments[this.state.selected];
       return (
           <div align="left" >
-            <h4>Assignment(s) ready to grade: </h4>
-              <div style={{ height: 450, width: '100%', align:"left"   }}>
-                <DataGrid rows={this.state.assignments} columns={columns} />
-              </div>                
+            <Grid container alignItems="baseline" spacing={0}>
+              <Grid item xs={4} sx={{pl: 4}}>
+                <h4>Assignment(s) ready to grade: </h4>
+              </Grid>
+              <Grid item xs={6}></Grid>
+              <Grid item xs={2}>
+                <Button component={Link} to={{pathname:'/addassignment'}} variant="outlined">Add Assignment</Button>
+              </Grid>
+            </Grid>
+            <div style={{ height: 450, width: '100%', align:"left"   }}>
+              <DataGrid rows={this.state.assignments} columns={columns} />
+            </div>                
             <Button component={Link} to={{pathname:'/gradebook',   assignment: assignmentSelected }} 
                     variant="outlined" color="primary" disabled={this.state.assignments.length===0}  style={{margin: 10}}>
               Grade
@@ -87,6 +96,6 @@ class Assignment extends React.Component {
           </div>
       )
   }
-}  
+}
 
 export default Assignment;
