@@ -82,14 +82,15 @@ class Assignment extends React.Component {
               </Grid>
               <Grid item xs={6}></Grid>
               <Grid item xs={2}>
-                <Button component={Link} to={{pathname:'/addassignment'}} variant="outlined">Add Assignment</Button>
+                <Button component={Link} to={{pathname:'/addassignment'}} variant="outlined" name="addAssignmentButton">Add Assignment</Button>
               </Grid>
             </Grid>
             <div style={{ height: 450, width: '100%', align:"left"   }}>
               <DataGrid rows={this.state.assignments} columns={columns} />
             </div>                
             <Button component={Link} to={{pathname:'/gradebook',   assignment: assignmentSelected }} 
-                    variant="outlined" color="primary" disabled={this.state.assignments.length===0}  style={{margin: 10}}>
+                    variant="outlined" color="primary" disabled={this.state.assignments.length===0}  style={{margin: 10}} 
+                    name="gradeButton">
               Grade
             </Button>
             <ToastContainer autoClose={1500} /> 

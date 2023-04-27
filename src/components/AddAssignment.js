@@ -27,17 +27,18 @@ class AddAssignment extends React.Component {
 
     //test values
     this.state = {
-      assignmentName: 'test',
-      classId: '999001',
-      dueDate: dayjs()
+      assignmentName: "",
+      classId: "",
+      dueDate: null
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    if(event.target.context.validationError == null){
+  handleChange = (event) => {
+    //console.log("Testing Please work")
+    if(event.validationError == null){
       const target = event.target;
       const value = target.value;
       const name = target.name;
@@ -45,7 +46,7 @@ class AddAssignment extends React.Component {
       this.setState({
         [name]: value
       });
-    }
+   }
   }
 
   //it took me so long to get the date to work properly
@@ -100,6 +101,7 @@ class AddAssignment extends React.Component {
               name="assignmentName"
               label="Assignment Name"
               value={this.state.assignmentName}
+              placeholder="test"
               onChange={this.handleChange}
             />
 
@@ -108,6 +110,7 @@ class AddAssignment extends React.Component {
               inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} //only allows numbers
               name="classId"
               label="Class ID"
+              placeholder="0000000"
               value={this.state.classId}
               onChange={this.handleChange}
             />
@@ -123,8 +126,8 @@ class AddAssignment extends React.Component {
               />
             </LocalizationProvider>
           
-            <Button size="large" variant="contained" onClick={this.handleSubmit}>Submit</Button>
-            <Button component={Link} to={{pathname:'/'}} color="error" size="medium" variant="contained">Back</Button>
+            <Button name="Submit" size="large" variant="contained" onClick={this.handleSubmit}>Submit</Button>
+            <Button name="Back" component={Link} to={{pathname:'/'}} color="error" size="medium" variant="contained">Back</Button>
           </Stack>
         </form>
         <ToastContainer autoClose={1500} /> 
